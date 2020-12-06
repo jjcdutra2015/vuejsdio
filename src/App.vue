@@ -1,34 +1,36 @@
 <template>
   <div id="app">
-    <ButtonVue></ButtonVue>
-    <ButtonString></ButtonString>
-    <ButtonTemplateString></ButtonTemplateString>
-    <ButtonXTemplate></ButtonXTemplate>
-    <ButtonInline inline-template>
-      <button @click="click">Clicar ButtonInline {{ count }} times </button>
-    </ButtonInline>
-    <ButtonRender></ButtonRender>
-    <ButtonJSX></ButtonJSX>
+    <!-- <input type="text" @input="text = $event.target.value" :value="text"> -->
+    <!-- <input type="text" v-model.trim="text"> -->
+    <Input v-model="text" />
+    {{ text }}
   </div>
 </template>
 
 <script>
-import ButtonVue from './ButtonVue'
-
+import Input from './Input'
 export default {
-  name: 'App',
-  components: {
-    ButtonVue
+  components: { Input },
+  name: "App",
+  data() {
+    return {
+      text: '',
+    };
+  },
+  watch: {
+    text(valor) {
+      console.log(valor)
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
- height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 </style>
